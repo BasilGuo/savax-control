@@ -96,6 +96,7 @@ This document mainly studies the relevant specifications of the control plane of
 |CSR| Certificate Signing Request, which is used for an AD or STA to join or exit the consortium blockchain. |
 |SM| State Machine, which is maintained by a pair of ACS to generate tags.|
 |Tag| The authentic identification of source address of a packet.|
+
 # The design of the Consortium Blockchain
 
 As discussed in the introduction, consortium blockchain will be used in SAVA-X mechanism.
