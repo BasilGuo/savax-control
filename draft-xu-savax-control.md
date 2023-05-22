@@ -24,24 +24,28 @@ author:
 -
   name: Ke Xu
   org: Computer Science, Tsinghua University
+  abbrev: Tsinghua University
   city: Beijing
   country: China
   email: xuke@tsinghua.edu.cn
 -
   name: Jianping Wu
   org: Computer Science, Tsinghua University
+  abbrev: Tsinghua University
   city: Beijing
   country: China
   email: jianping@cernet.edu.cn
 -
   name: Xiaoliang Wang
   org: Computer Science, Tsinghua University
+  abbrev: Tsinghua University
   city: Beijing
   country: China
   email: wangxiaoliang0623@foxmail.com
 -
   name: Yangfei Guo
-  org: Institute for Network Sciences and Cyberspace, Tsinghua University
+  org: Zhongguancun Laboratory
+  abbrev: ZGC Lab
   city: Beijing
   country: China
   email: guoyangfei@zgclab.edu.cn
