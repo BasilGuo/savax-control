@@ -6,7 +6,7 @@ category: std
 
 ipr: trust200902
 docname: draft-xu-savax-control-latest
-submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
+# submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
 number:
 date:
 consensus: true
