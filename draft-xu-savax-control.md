@@ -11,8 +11,8 @@ number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: Network Working Group
+# area: AREA
+# workgroup: Network Working Group
 
 coding: us-ascii
 pi:    # can use array (if all yes) or hash here
