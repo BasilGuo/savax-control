@@ -5,10 +5,10 @@
 Network Working Group                                              K. Xu
 Internet-Draft                                                     J. Wu
 Intended status: Standards Track                                 X. Wang
-Expires: 23 November 2023                            Tsinghua University
+Expires: 25 May 2024                                 Tsinghua University
                                                                   Y. Guo
                                                                  ZGC Lab
-                                                             22 May 2023
+                                                        22 November 2023
 
 
   Control Plane of Inter-Domain Source Address Validation Architecture
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 November 2023.
+   This Internet-Draft will expire on 25 May 2024.
 
 Copyright Notice
 
@@ -68,20 +68,21 @@ Table of Contents
    1.  Introduction
    2.  Conventions and Definitions
      2.1.  Terminology and Abbreviation
-     2.2.  Trust Alliance
-     2.3.  Consortium Blockchain
-     2.4.  Joining and Exiting
-       2.4.1.  Node Joining
-       2.4.2.  Node Exiting
-   3.  Alliance Information and State Machine Maintenance based on the
+   3.  The design of the Consortium Blockchain
+     3.1.  Trust Alliance
+     3.2.  Consortium Blockchain
+     3.3.  Joining and Exiting
+       3.3.1.  Node Joining
+       3.3.2.  Node Exiting
+   4.  Alliance Information and State Machine Maintenance based on the
            Consortium Blockchain
-     3.1.  Address Domain Identity Record
-     3.2.  AD Registration Information Record
-     3.3.  AD Prefix Information Record
-   4.  Time Synchronization
-   5.  Security Consideration
-   6.  IANA Consideration
-   7.  Normative References
+     4.1.  Address Domain Identity Record
+     4.2.  AD Registration Information Record
+     4.3.  AD Prefix Information Record
+   5.  Time Synchronization
+   6.  Security Consideration
+   7.  IANA Consideration
+   8.  Normative References
    Acknowledgments
    Authors' Addresses
 
@@ -128,29 +129,57 @@ Table of Contents
 
 2.1.  Terminology and Abbreviation
 
-   | Abbreviation |
-   Description | |--------------+:---------------------| |AD | Address
-   Domain, the unit of a trust alliance, which is an address set
-   consisting of all IPv6 addresses corresponding to an IPv6 address
-   prefix.| |TA | Trust Alliance, the IPv6 network that uses the SAVA-X
-   mechanism.| |STA| sub-Trust Alliance, parts of TA. | |STA-admin|STA
-   Administrator, the administrator of STA.| |ACS| AD Control Server,
-   the server that matains state machine with other ACS and distribute
-   information to AER. | |AER| AD border router, which is placed at the
-   boundary of an AD of STA. | |ADID | The identity of an
-   AD. | |ADID_Rec | The record of a number of an AD. | |ARI_Rec | The
-   record with relavent information of an AD or STA.| |API_Rec| The
-   record of prefix of an AD or STA. | |CSR| Certificate Signing
-   Request, which is used for an AD or STA to join or exit the
-   consortium blockchain. | |SM| State Machine, which is maintained by a
-   pair of ACS to generate tags.| |Tag| The authentic identification of
-   source address of a packet.| # The design of the Consortium
-   Blockchain
+   +==============+====================================================+
+   | Abbreviation | Description                                        |
+   +==============+====================================================+
+   | AD           | Address Domain, the unit of a trust                |
+   |              | alliance, which is an address set                  |
+   |              | consisting of all IPv6 addresses                   |
+   |              | corresponding to an IPv6 address prefix.           |
+   +--------------+----------------------------------------------------+
+   | TA           | Trust Alliance, the IPv6 network that              |
+   |              | uses the SAVA-X mechanism.                         |
+   +--------------+----------------------------------------------------+
+   | STA          | sub-Trust Alliance, parts of TA.                   |
+   +--------------+----------------------------------------------------+
+   | STA-admin    | STA Administrator, the administrator of            |
+   |              | STA.                                               |
+   +--------------+----------------------------------------------------+
+   | ACS          | AD Control Server, the server that                 |
+   |              | matains state machine with other ACS and           |
+   |              | distribute information to AER.                     |
+   +--------------+----------------------------------------------------+
+   | AER          | AD border router, which is placed at the           |
+   |              | boundary of an AD of STA.                          |
+   +--------------+----------------------------------------------------+
+   | ADID         | The identity of an AD.                             |
+   +--------------+----------------------------------------------------+
+   | ADID_Rec     | The record of a number of an AD.                   |
+   +--------------+----------------------------------------------------+
+   | ARI_Rec      | The record with relavent information of            |
+   |              | an AD or STA.                                      |
+   +--------------+----------------------------------------------------+
+   | API_Rec      | The record of prefix of an AD or STA.              |
+   +--------------+----------------------------------------------------+
+   | CSR          | Certificate Signing Request, which is              |
+   |              | used for an AD or STA to join or exit              |
+   |              | the consortium blockchain.                         |
+   +--------------+----------------------------------------------------+
+   | SM           | State Machine, which is maintained by a            |
+   |              | pair of ACS to generate tags.                      |
+   +--------------+----------------------------------------------------+
+   | Tag          | The authentic identification of source             |
+   |              | address of a packet.                               |
+   +--------------+----------------------------------------------------+
+
+                                  Table 1
+
+3.  The design of the Consortium Blockchain
 
    As discussed in the introduction, consortium blockchain will be used
    in SAVA-X mechanism.
 
-2.2.  Trust Alliance
+3.1.  Trust Alliance
 
    Trust Alliance (TA) is a hierarchical structure.  Address domains
    (AD) are assigned into different sub-trust alliances (STA) according
@@ -207,7 +236,7 @@ Table of Contents
    address domain and the external address domain of the sub-trust
    alliance.
 
-2.3.  Consortium Blockchain
+3.2.  Consortium Blockchain
 
    To simplify the control plane's design and avoid the single point
    failure to subvert the SAVA-X, we design the SAVA-X with a
@@ -230,9 +259,9 @@ Table of Contents
    trust alliance maintains the relationship of the members in each sub-
    trust alliance through the trust alliance management committee chain.
 
-2.4.  Joining and Exiting
+3.3.  Joining and Exiting
 
-2.4.1.  Node Joining
+3.3.1.  Node Joining
 
    This is the admission of joining of the sub-trustalliance member AD.
    The prerequisite for the AD to join the sub-trust alliance is to have
@@ -273,7 +302,7 @@ Table of Contents
    information, the returned ADID or sub-trust alliance number will be
    selected.
 
-2.4.2.  Node Exiting
+3.3.2.  Node Exiting
 
    The member node needs to submit the CSR file again to delete its
    relevant information.  Its STA-admin decides whether to allow it exit
@@ -285,7 +314,7 @@ Table of Contents
    administrator nodes need to delete their maintenance-related sub
    alliance node information.
 
-3.  Alliance Information and State Machine Maintenance based on the
+4.  Alliance Information and State Machine Maintenance based on the
     Consortium Blockchain
 
    On the AER of the destination AD, to validate the tag, it is first
@@ -309,7 +338,7 @@ Table of Contents
    ARI_Rec, and API_Rec.  We give the packet format required by SAVA-X
    in the control plane as follows.
 
-3.1.  Address Domain Identity Record
+4.1.  Address Domain Identity Record
 
    Address Domain Identity Record (ADID_Rec) is used to identify an
    address domain uniquely in the trust alliacne.
@@ -331,7 +360,7 @@ Table of Contents
       each bit of ADID is 1, it represents that the AER requests the
       information of all members from ACS.
 
-3.2.  AD Registration Information Record
+4.2.  AD Registration Information Record
 
    AD Registration Information Record (ARI_Rec) is the registration
    information record of AD, which is used to record the necessary
@@ -389,7 +418,7 @@ Table of Contents
    domain.  The ordinary address domain is neither a primary address
    domain nor a boundary address domain.
 
-3.3.  AD Prefix Information Record
+4.3.  AD Prefix Information Record
 
    AD Prefix Information Record (API_Rec) is the prefix information
    corresponds to the prefix of a specific AD.  An AD may have more than
@@ -438,7 +467,7 @@ Table of Contents
    consortium blockchain and send it to all AERs of their AD with the
    communication protocol between ACS and AER.
 
-4.  Time Synchronization
+5.  Time Synchronization
 
    Due to the time error between the border routers of the member ADs,
    to ensure the correct operation of the tag validation, it is
@@ -504,15 +533,15 @@ Table of Contents
    actual network environment.  Therefore, the lifecyle of a tag is as:
    lifecycle = Transition Interval + 2te --td_min + td_max.
 
-5.  Security Consideration
+6.  Security Consideration
 
    TBD.
 
-6.  IANA Consideration
+7.  IANA Consideration
 
    TBD.
 
-7.  Normative References
+8.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
